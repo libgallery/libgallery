@@ -1,0 +1,26 @@
+libgallery
+==========
+
+libgallery provides an interface for accessing boorus,
+and other resources in a booru-like fashion. It is
+currently very unstable, as I want people to start
+toying with this so we can refine how things work.
+Once we reach 1.0 there will be no backwards
+incompatible changes.
+
+Also included is a command line interface and some 
+official drivers. libgallery also includes a registry
+that third-party drivers can use import side-effects 
+to automatically register with (like database/sql).
+This makes it trivial to add drivers to existing 
+programs using libgallery.
+
+If you're writing quality drivers with minimal
+external dependencies, you're strongly encouraged to
+contribute and make them official drivers.
+
+Further things worth researching:
+
+- Bindings to languages like Python via the C API
+- Runtime plugins with something like yaegi
+- Interfaces for authentication
