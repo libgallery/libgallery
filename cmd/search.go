@@ -45,7 +45,6 @@ func implSearch(impl libgallery.Driver, query string, limit uint64) {
 			if onlyids {
 				fmt.Println(v.ID)
 			} else {
-
 				if onlyids {
 					fmt.Println(v.ID)
 				} else {

@@ -73,10 +73,9 @@ func (i *implementation) Search(query string, page uint64) ([]libgallery.Post, e
 	}
 
 	return posts, err
-
 }
 
-func (i *implementation) File(id string) ([]io.ReadCloser, error) {
+func (i *implementation) File(id string) (libgallery.Files, error) {
 	const reqbase = "https://%s/posts/%v.json"
 	url := fmt.Sprintf(reqbase, i.host, id)
 
@@ -92,7 +91,6 @@ func (i *implementation) File(id string) ([]io.ReadCloser, error) {
 	}
 
 	return []io.ReadCloser{rc}, nil
-
 }
 
 func (i *implementation) Comments(id string) ([]libgallery.Comment, error) {
@@ -123,7 +121,6 @@ func (i *implementation) Comments(id string) ([]libgallery.Comment, error) {
 	}
 
 	return comments, err
-
 }
 
 func (i *implementation) Name() string {

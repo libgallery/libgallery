@@ -75,10 +75,9 @@ func (i *implementation) Search(query string, page uint64) ([]libgallery.Post, e
 	}
 
 	return posts, err
-
 }
 
-func (i *implementation) File(id string) ([]io.ReadCloser, error) {
+func (i *implementation) File(id string) (libgallery.Files, error) {
 	const reqbase = "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&id="
 
 	var response searchResponse
@@ -98,7 +97,6 @@ func (i *implementation) File(id string) ([]io.ReadCloser, error) {
 	}
 
 	return []io.ReadCloser{rc}, nil
-
 }
 
 func (i *implementation) Name() string {

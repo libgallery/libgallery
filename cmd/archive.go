@@ -58,8 +58,9 @@ func implArchive(dname string, driver libgallery.Driver, query string, limit uin
 				log.Fatal(err)
 			}
 
+			defer files.Close()
+
 			for i, j := range files {
-				defer j.Close()
 				filename := fmt.Sprintf("%s_%v", v.ID, i)
 				file, err := os.Create(filename)
 				if err != nil {
@@ -71,7 +72,7 @@ func implArchive(dname string, driver libgallery.Driver, query string, limit uin
 					log.Fatal(err)
 				}
 
-				file.Close()
+				defer file.Close()
 
 				mime, err := mimetype.DetectFile(filename)
 				if err != nil {
@@ -84,6 +85,8 @@ func implArchive(dname string, driver libgallery.Driver, query string, limit uin
 				}
 
 			}
+
+			files.Close()
 		}
 
 		i++

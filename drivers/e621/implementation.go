@@ -75,10 +75,9 @@ func (i *implementation) Search(query string, page uint64) ([]libgallery.Post, e
 	}
 
 	return libposts, err
-
 }
 
-func (i *implementation) File(id string) ([]io.ReadCloser, error) {
+func (i *implementation) File(id string) (libgallery.Files, error) {
 	const reqbase = "https://e621.net/posts/%s.json"
 	url := fmt.Sprintf(reqbase, id)
 
@@ -96,7 +95,6 @@ func (i *implementation) File(id string) ([]io.ReadCloser, error) {
 	}
 
 	return []io.ReadCloser{filereader}, nil
-
 }
 
 // No API access, will need to implement scraping.

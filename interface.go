@@ -18,7 +18,7 @@ type Driver interface {
 	// If a booru doesn't support it you will need to
 	// transmogrify the query.
 	Search(string, uint64) ([]Post, error) // Tags, and page number.
-	File(string) ([]io.ReadCloser, error)  // Fetches a file with a given ID.
+	File(string) (Files, error)            // Fetches a file with a given ID.
 	Comments(string) ([]Comment, error)    // Fetches the comments from a given ID.
 }
 
@@ -39,7 +39,14 @@ type Post struct {
 	Score       int64     `json:"score"`
 }
 
-//
+type Files []io.ReadCloser
+
+func (f *Files) Close() {
+	for _, v := range *f {
+		v.Close()
+	}
+}
+
 type Comment struct {
 	Author string    `json:"author"`
 	Body   string    `json:"body"`
