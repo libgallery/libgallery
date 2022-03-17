@@ -1,0 +1,11 @@
+image: alpine/edge
+packages:
+- git
+secrets: 
+        - fc015051-8c0f-4ba4-b22c-e216414cb91b
+tasks:
+        - mirror: |
+                git clone --mirror https://git.sr.ht/~welt/libgallery
+                cd libgallery.git
+                export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+                git push --mirror git@github.com:libgallery/libgallery
