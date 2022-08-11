@@ -65,6 +65,7 @@ func (i *implementation) Search(query string, page uint64) ([]libgallery.Post, e
 		}
 
 		posts = append(posts, libgallery.Post{
+			URL:    fmt.Sprintf("https://rule34.xxx/index.php?page=post&s=view&id=%v", v.ID),
 			Tags:   strings.TrimSpace(v.Tags),
 			Date:   ptime,
 			Source: source,

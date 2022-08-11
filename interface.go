@@ -29,6 +29,7 @@ type Driver interface {
 // username (unless usernames are used as IDs like
 // Reddit)
 type Post struct {
+	URL         string
 	ID          string    `json:"id"`
 	NSFW        bool      `json:"nsfw"`
 	Date        time.Time `json:"date"`

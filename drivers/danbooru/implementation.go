@@ -62,6 +62,7 @@ func (i *implementation) Search(query string, page uint64) ([]libgallery.Post, e
 			return []libgallery.Post{}, err
 		}
 		posts = append(posts, libgallery.Post{
+			URL:      fmt.Sprintf("https://%v/posts/%v", i.host, v.ID),
 			Uploader: strconv.FormatUint(uint64(v.ID), 10),
 			Tags:     v.Tags,
 			Date:     ptime,
